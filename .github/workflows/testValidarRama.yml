@@ -1,0 +1,23 @@
+name: Test Validar Rama
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  validar-rama:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validar rama
+        id: validar
+        uses: ./.github/actions/ValidarRama
+        with:
+          nombre: ${{ github.ref_name }}
+
+      - name: Mostrar resultado
+        run: echo "La rama fue: ${{ steps.validar.outputs.resultado }}"
