@@ -4,6 +4,12 @@ on:
     branches:
       - main
       - develop
+  workflow_dispatch:
+    inputs:
+      nombre:
+        description: Nombre de la rama que quieres validar
+        required: true
+        type: string
 
 jobs:
   validar-rama:
@@ -17,7 +23,7 @@ jobs:
         id: validar
         uses: ./.github/actions/ValidarRama
         with:
-          nombre: ${{ github.ref_name }}
+          nombre: ${{ inputs.nombre || github.ref_name }}
 
       - name: Mostrar resultado
-        run: 'echo "La rama fue: ${{ steps.validar.outputs.resultado }}"'
+        run: 'echo "La rama ingresada fue: ${{ inputs.nombre || github.ref_name }}. Resultado: ${{ steps.validar.outputs.resultado }}"'
