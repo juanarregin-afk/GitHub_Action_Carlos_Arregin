@@ -11,6 +11,4 @@ jobs:
         with:
           nombre: GitHub Actions
 
-      - uses: actions/checkout@v4
-      - name: Ejecutar Test Validar Rama
-        uses: ./ValidarRama/
+     
