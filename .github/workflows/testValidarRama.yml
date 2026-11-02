@@ -20,4 +20,4 @@ jobs:
           nombre: ${{ github.ref_name }}
 
       - name: Mostrar resultado
-        run: echo "La rama fue: ${{ steps.validar.outputs.resultado }}"
+        run: 'echo "La rama fue: ${{ steps.validar.outputs.resultado }}"'
