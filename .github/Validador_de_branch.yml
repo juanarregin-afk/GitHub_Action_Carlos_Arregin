@@ -1,0 +1,12 @@
+name: Validador de Branch
+description: Validar si la rama es main
+inputs:
+  nombre:
+    description: Nombre de la rama
+    required: true
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        echo "Hola ${{ inputs.nombre }}"
