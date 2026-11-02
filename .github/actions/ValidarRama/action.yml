@@ -1,1 +1,27 @@
+name: Validador de Branch
 
+description: Validar si la rama es main
+inputs:
+  nombre:
+    description: Nombre de la rama
+    required: true
+outputs:
+  resultado:
+    description: Resultado de la validación (Aprobado o Rechazado)
+    value: ${{ steps.validar.outputs.resultado }}
+runs:
+  using: composite
+  steps:
+    - id: validar
+      shell: bash
+      env:
+        NOMBRE_RAMA: ${{ inputs.nombre }}
+      run: |
+        if [[ "$NOMBRE_RAMA" == "main" ]]; then
+          resultado="Aprobado"
+        else
+          resultado="Rechazado"
+        fi
+
+        echo "$resultado"
+        echo "resultado=$resultado" >> "$GITHUB_OUTPUT"
