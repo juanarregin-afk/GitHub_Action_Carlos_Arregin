@@ -1,4 +1,6 @@
 name: Validador de Branch
+on:
+  workflow_dispatch:
 description: Validar si la rama es main
 inputs:
   nombre:
