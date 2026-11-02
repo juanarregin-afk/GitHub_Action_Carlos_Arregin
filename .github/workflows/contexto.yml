@@ -1,0 +1,20 @@
+name: Contexto en Github Actions
+on:
+  issues:
+  #workflow_dispatch:
+
+jobs:
+  prueba:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mostrar nombre evento Push pull_request
+        run: echo ${{ github.event_name }}
+      - name: Mostar usuario que ejecuto
+        run: echo ${{ github.actor }}
+      - name: Mostar rama o tag
+        run: echo ${{ github.ref }}
+      - name: Mostar owner repositorio
+        run: echo ${{ github.repository }}
+      - name: Mostar Titulo del issue
+        run: echo ${{ github.event.issue.title }}
