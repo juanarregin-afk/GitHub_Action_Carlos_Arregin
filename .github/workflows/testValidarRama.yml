@@ -9,7 +9,12 @@ on:
       nombre:
         description: Nombre de la rama que quieres validar
         required: true
-        type: string
+        type: choice
+        options:
+          - dev
+          - tst
+          - main
+        
 
 jobs:
   validar-rama:
